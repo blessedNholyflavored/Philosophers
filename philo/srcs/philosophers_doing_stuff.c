@@ -53,18 +53,14 @@ int	eatingphilo(t_master *master, int i)
 int	drop_the_fork(t_master *master, int i)
 {
 	if (i % 2 == 0)
-		pthread_mutex_unlock(&master->forks[master->philo[i].fork.left]);
-	else
 	{
+		pthread_mutex_unlock(&master->forks[master->philo[i].fork.left]);
 		pthread_mutex_unlock(&master->forks[master->philo[i].fork.right]);
-		philo_print(master, master->philo[i].id, FORK);
 	}
-	if (i % 2 == 0)
-		pthread_mutex_unlock(&master->forks[master->philo[i].fork.right]);
 	else
 	{
+		pthread_mutex_unlock(&master->forks[master->philo[i].fork.right]);
 		pthread_mutex_unlock(&master->forks[master->philo[i].fork.left]);
-		philo_print(master, master->philo[i].id, FORK);
 	}
 	pthread_mutex_lock(&master->already_ate);
 	master->philo[i].number_of_times_each_philosopher_ate++;
