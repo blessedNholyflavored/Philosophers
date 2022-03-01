@@ -27,12 +27,6 @@
 
 # define INT_MAX 2147483647
 
-typedef struct s_intlock
-{
-	int				value;
-	pthread_mutex_t	mutex;
-}	t_intlock;
-
 typedef struct s_args
 {
 	int		time_to_die;
